@@ -56,7 +56,7 @@ const Day1Window = ({ onClose, onFolderClick }: Day1WindowProps) => (
     <div className="w-[300px] h-[200px] border border-white bg-gray-200 relative font-mono shadow-lg overflow-hidden">
       {/* Title Bar */}
       <div className="flex justify-between items-center bg-blue-900 text-white pl-2 text-xs">
-        <span className="handle cursor-move flex-grow">Day 1</span>
+        <span className="handle cursor-move flex-grow">Day 2</span>
         <button
           onClick={onClose}
           className="bg-gray-600 border-l border-white text-black px-1 cursor-pointer"
@@ -65,8 +65,8 @@ const Day1Window = ({ onClose, onFolderClick }: Day1WindowProps) => (
         </button>
       </div>
       <div className="flex items-center bg-gray-400 text-white text-xs handle cursor-move border-t border-b border-white">
-        <span className="border-r border-white px-1">🔙</span>
-        <span className="border-r border-white px-1">🏠︎</span>
+        <span className="border-r border-white px-1" onClick={onClose}>🔙</span>
+        <span className="border-r border-white px-1" onClick={onClose}>🏠︎</span>
         <span className="px-2">C:\Events\Day2</span>
       </div>
       <Day2Content onFolderClick={onFolderClick} />

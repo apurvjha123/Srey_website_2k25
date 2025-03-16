@@ -8,6 +8,7 @@ import GlitchEffect from './Effects/GlitchEffect';
 import InterlaceEffect from './Effects/InterlaceEffect';
 import RGBShiftEffect from './Effects/RGBShiftEffect';
 import { icons } from './constants/icons';
+import SponsorWindow from './CRT/SponsorWindow';
 import './styles/animations.css';
 import Day1Window from './CRT/Day1';
 import Day2Window from './CRT/Day2';
@@ -18,6 +19,17 @@ import Gallery from './CRT/Gallery';
 import RulesDocument from './CRT/RulesDocument';
 import eventContentData from './constants/EventContentData';
 import useCRTDimensions from '../hooks/useCRTDimensions';
+
+// Sponsor data array - you can move this to a separate file in constants folder later
+const sponsorData = [
+  { 
+    id: 'sponsor1', 
+    name: 'P360', 
+    image: '/p360.PNG', 
+    tier: 'Platinum',
+    website: 'https://www.p360.com/' 
+  }
+];
 
 const CRTScreen = () => {
   const [openWindows, setOpenWindows] = useState([]);
@@ -113,18 +125,18 @@ const CRTScreen = () => {
 
   // Function to determine window position to avoid stacking directly on top of each other
   const getWindowPosition = (windowId) => {
-    const basePosition = { x: 10, y: 10 };
+    const basePosition = { x: 7, y: 10 };
     
     // For event folders, position them with slight offset
     if (windowId.includes('-')) {
       return { 
-        x: basePosition.x + (Math.random() * 40), 
-        y: basePosition.y + (Math.random() * 40)
+        x: 7, 
+        y: 10
       };
     }
     
     if (windowId === 'day2') {
-      return { x: 30, y: 30 };
+      return { x: 7, y: 10 };
     }
     
     return basePosition;
@@ -175,6 +187,17 @@ const CRTScreen = () => {
 
   // Render appropriate component based on window ID
   const renderWindow = (windowId) => {
+    // Handle sponsor window
+    if (windowId === 'sponsor') {
+      return (
+        <SponsorWindow 
+          title="Sponsors"
+          onClose={(e) => closeWindow(windowId, e)}
+          sponsors={sponsorData}
+        />
+      );
+    }
+    
     // Handle specific document types (rules, about us, gallery)
     if (windowId.endsWith('-rules')) {
       const baseEventId = getBaseEventId(windowId);
