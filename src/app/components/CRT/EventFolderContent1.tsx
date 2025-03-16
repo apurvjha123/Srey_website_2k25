@@ -39,11 +39,11 @@ const EventFolderContent1: React.FC<EventFolderContent1Props> = ({
           <div className="mt-4">
             <div className="grid grid-cols-2 gap-2">
               <div className="flex items-center cursor-pointer" onClick={() => onItemClick('gallery')}>
-                <img src="https://de34i7k6qwgwc.cloudfront.net/uploads/img/folder-d42ea2.png" alt="Folder" className="w-6 h-6 mr-2" />
+                <img src="/folder-d42ea2.png" alt="Folder" className="w-6 h-6 mr-2" />
                 <span>Gallery</span>
               </div>
               <div className="flex items-center cursor-pointer" onClick={() => onItemClick('rules')}>
-                <img src="https://de34i7k6qwgwc.cloudfront.net/uploads/img/text-icon-40e7b4.png" alt="PDF" className="w-6 h-6 mr-2" />
+                <img src="/folder-d42ea2.png" alt="PDF" className="w-6 h-6 mr-2" />
                 <span>Rules.pdf</span>
               </div>
               <div className="flex items-center cursor-pointer" onClick={() => onItemClick('registration')}>

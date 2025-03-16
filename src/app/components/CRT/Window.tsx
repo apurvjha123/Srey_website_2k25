@@ -253,7 +253,7 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
               onClick={() => handleFolderClick("day1")}
             >
               <img
-                src="https://de34i7k6qwgwc.cloudfront.net/uploads/img/folder-d42ea2.png"
+                src="folder-d42ea2.png"
                 alt="Folder"
                 className="w-8 h-8 mr-2"
               />
@@ -264,7 +264,7 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
               onClick={() => handleFolderClick("day2")}
             >
               <img
-                src="https://de34i7k6qwgwc.cloudfront.net/uploads/img/folder-d42ea2.png"
+                src="/folder-d42ea2.png"
                 alt="Folder"
                 className="w-8 h-8 mr-2"
               />
