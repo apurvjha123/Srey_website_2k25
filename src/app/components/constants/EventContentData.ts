@@ -17,7 +17,7 @@ export interface EventContent {
     'table-tennis': {
       title: 'Table Tennis',
       description: 'Competitive table tennis tournament',
-      rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Matches will be played in best of 3 format. Players must bring their own paddles. Tournament will follow knockout format.',
+      rules: 'https://forms.google.com/tabletennis',
       aboutUs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. The Table Tennis club at St. Thomas College has been active since 2010 and has produced several state-level players.',
       registrationLink: 'https://forms.google.com/tabletennis',
       galleryImages: [
@@ -66,7 +66,7 @@ export interface EventContent {
       title: 'Pixcellence',
       description: 'Photography competition',
       rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Photos must be original work. Editing is allowed but must be disclosed. Theme will be announced on the day of the event.',
-      aboutUs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pixcellence is our flagship photography competition that has discovered several talented photographers over the years.',
+      aboutUs: 'Showcase your creativity and storytelling through the lens! Join our college photography competition and capture moments that inspire.',
       registrationLink: 'https://forms.google.com/pixcellence',
       galleryImages: [
         'https://de34i7k6qwgwc.cloudfront.net/uploads/img/photo1.jpg',
@@ -92,7 +92,7 @@ export interface EventContent {
       title: 'IPL Mock Auction',
       description: 'Simulated IPL team auction',
       rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Teams will have a virtual budget of 80 crores. Player list will be provided 2 days before the event.',
-      aboutUs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. The IPL Mock Auction is one of our most popular events that tests participants\' strategic thinking and cricket knowledge.',
+      aboutUs: 'Bid smart, strategize, and build your dream team! Join our IPL Mock Auction, where every choice counts and only the best team owners rise to the top.',
       registrationLink: 'https://forms.google.com/iplauction',
       galleryImages: [
         'https://de34i7k6qwgwc.cloudfront.net/uploads/img/ipl1.jpg',
@@ -116,7 +116,7 @@ export interface EventContent {
       title: 'Mini Games',
       description: '24-hour coding competition',
       rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Teams of 2-4 members. Problem statements will be revealed at the start of the event. Teams must bring their own laptops.',
-      aboutUs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our hackathon brings together the brightest minds to solve real-world problems through innovative technology solutions.',
+      aboutUs: 'Play, compete, and have a blast! Join our Mini Games Carnival, featuring exciting challenges like Darts, Air Hockey, Cup Stack, Mini Basketball, Flip Tic Tac Toe, Electric Touch, and Jenga. Test your skills, have fun, and claim victory!',
       registrationLink: 'https://forms.google.com/hackathon',
       galleryImages: [
         'https://de34i7k6qwgwc.cloudfront.net/uploads/img/hack1.jpg',
@@ -129,7 +129,7 @@ export interface EventContent {
       title: 'Sketchify',
       description: 'Sketching and drawing contest',
       rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Participants must bring their own stationery. \nTheme will be announced on the spot. Duration is 2 hours.',
-      aboutUs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sketchify celebrates artistic talent and provides a platform for artists to express their creativity through sketching.',
+      aboutUs: 'Sketchify event at St. Thomas College has been a creative outlet for students  showcasing exceptional artistic talent and fostering a passion for sketching.',
       registrationLink: 'https://forms.google.com/sketchify',
       galleryImages: [
         '/scene2-d14f31-compressed-da7d54.jpg',
@@ -153,7 +153,7 @@ export interface EventContent {
       title: 'Mystic Map',
       description: 'Treasure hunt with cryptic clues',
       rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Teams of 3-5 members. Clues will be provided at different checkpoints. First team to reach the final destination wins.',
-      aboutUs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mystic Map challenges participants with cryptic clues and puzzles in an exciting treasure hunt across the campus.',
+      aboutUs: 'Decipher the clues, navigate the unknown, and uncover hidden secrets! Join Mystic Map, our ultimate treasure hunt, where only the sharpest minds and quickest explorers will claim victory.',
       registrationLink: 'https://forms.google.com/mysticmap',
       galleryImages: [
         'https://de34i7k6qwgwc.cloudfront.net/uploads/img/map1.jpg',
@@ -164,7 +164,7 @@ export interface EventContent {
       title: 'Quiz',
       description: 'General knowledge quiz competition',
       rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Teams of 2 members. Multiple rounds including written, audio-visual, and rapid fire rounds.',
-      aboutUs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our quiz competition tests participants\' knowledge across various domains including science, history, sports, and pop culture.',
+      aboutUs: 'Think fast, answer smart, and claim the crown! Join our college quiz competition, where knowledge meets competition and only the sharpest minds prevail.',
       registrationLink: 'https://forms.google.com/quiz',
       galleryImages: [
         'https://de34i7k6qwgwc.cloudfront.net/uploads/img/quiz1.jpg',
@@ -176,7 +176,7 @@ export interface EventContent {
       title: 'Robotics',
       description: 'Robot building and programming challenge',
       rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Teams will be provided with robotics kits. Tasks will be announced on the spot. Time limit is 4 hours.',
-      aboutUs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. The robotics competition challenges participants to build and program robots to complete specific tasks.',
+      aboutUs: 'Gear up, innovate, and dominate the arena! Join RoboRush, our ultimate robotics showdown, where creativity meets competition and only the smartest bots survive.',
       registrationLink: 'https://forms.google.com/robotics',
       galleryImages: [
         'https://de34i7k6qwgwc.cloudfront.net/uploads/img/robot1.jpg',
@@ -184,11 +184,48 @@ export interface EventContent {
         'https://de34i7k6qwgwc.cloudfront.net/uploads/img/robot3.jpg',
       ]
     },
+    'bgmi': {
+      title: 'BGMI',
+      description: 'Battlegrounds Mobile India tournament',
+      rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Teams of 4 members. Multiple rounds including qualifiers and finals. Players must bring their own devices with BGMI installed.',
+      aboutUs: 'Experience the thrill of battle royale competition! Our BGMI tournament brings together the best squads from across campus to compete for glory in intense tactical gameplay.',
+      registrationLink: 'https://forms.google.com/bgmi',
+      galleryImages: [
+        'https://de34i7k6qwgwc.cloudfront.net/uploads/img/bgmi1.jpg',
+        'https://de34i7k6qwgwc.cloudfront.net/uploads/img/bgmi2.jpg',
+        'https://de34i7k6qwgwc.cloudfront.net/uploads/img/bgmi3.jpg',
+      ]
+    },
+    'valorant': {
+    title: 'Valorant',
+    description: 'Tactical 5v5 FPS competition',
+    rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Teams of 5 members. Double elimination tournament. Standard Valorant competitive rules apply. Matches will be best of 3.',
+    aboutUs: 'Aim, strategize, and dominate! Join our Valorant tournament where tactical precision meets lightning reflexes. Form your squad and prove your worth in this premier collegiate esports event.',
+    registrationLink: 'https://forms.google.com/valorant',
+    galleryImages: [
+      'https://de34i7k6qwgwc.cloudfront.net/uploads/img/valorant1.jpg',
+      'https://de34i7k6qwgwc.cloudfront.net/uploads/img/valorant2.jpg',
+      'https://de34i7k6qwgwc.cloudfront.net/uploads/img/valorant3.jpg',
+      'https://de34i7k6qwgwc.cloudfront.net/uploads/img/valorant4.jpg',
+    ]
+  },
+  
+  'pes': {
+    title: 'PES',
+    description: 'Pro Evolution Soccer tournament',
+    rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 1v1 knockout format. Players can select any club or national team. Standard half length is 5 minutes. No custom teams allowed.',
+    aboutUs: 'Show your virtual football skills at our PES tournament! Experience the excitement of competitive gaming with realistic gameplay and tactical depth in this popular football simulation.',
+    registrationLink: 'https://forms.google.com/pes',
+    galleryImages: [
+      'https://de34i7k6qwgwc.cloudfront.net/uploads/img/pes1.jpg',
+      'https://de34i7k6qwgwc.cloudfront.net/uploads/img/pes2.jpg',
+    ]
+  },
     'coding': {
       title: 'Coding',
       description: 'Competitive programming contest',
       rules: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Individual participation. Problems will range from easy to hard. Time limit is 3 hours.',
-      aboutUs: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our coding competition tests participants\' problem-solving skills and knowledge of algorithms and data structures.',
+      aboutUs: 'Code, compile, and conquer! Join our college coding competition, where logic meets innovation and only the best programmers rise to the top.',
       registrationLink: 'https://forms.google.com/coding',
       galleryImages: [
         'https://de34i7k6qwgwc.cloudfront.net/uploads/img/code1.jpg',

@@ -12,7 +12,9 @@ export const Day2Content = ({ onFolderClick }: { onFolderClick?: (folderId: stri
   // Custom folder names
   const folders = [
     "Mini Games",
-    "Playtopia",
+    "BGMI",
+    "Valorant",
+    "PES",
     "Mystic Map",
     "Quiz",
     "Robotics",

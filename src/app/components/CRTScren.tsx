@@ -225,7 +225,7 @@ const CRTScreen = () => {
       
       const handleFolderItemClick = (item) => {
         if (item === 'rules') {
-          toggleWindow(`${baseEventId}-rules`);
+          handleExternalLink(eventData.rules);
         } else if (item === 'about') {
           toggleWindow(`${baseEventId}-about`);
         } else if (item === 'gallery') {
