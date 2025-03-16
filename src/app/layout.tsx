@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body style={{
         fontFamily: 'var(--font-byte-bounce)',
-        backgroundImage: 'url(/IMG_3995.PNG)',
+        backgroundImage: 'url(/IMG_4258.PNG)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
