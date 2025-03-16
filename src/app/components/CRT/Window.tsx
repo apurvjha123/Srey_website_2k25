@@ -10,11 +10,14 @@ interface WindowProps {
 
 const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
   const [command, setCommand] = useState<string>("");
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [history, setHistory] = useState<string[]>([
     "Welcome to SREY 2K25 Terminal",
     "Type /help to see available commands",
   ]);
   const terminalRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
   const contacts = [
     { name: "Manash", role: "Core Committee", phone: "+91 7439270692" },
@@ -22,6 +25,15 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
     { name: "Adil", role: "Core Committee", phone: "+91 6291227656" },
     { name: "Tushar", role: "Core Committee", phone: "+91 8709288805" },
     { name: "Sourik", role: "Core Committee", phone: "+91 6298767026" }
+  ];
+
+  const commands = [
+    { name: "/help", description: "Show available commands" },
+    { name: "/insta", description: "Get our Instagram handle" },
+    { name: "/fb", description: "Get our Facebook page" },
+    { name: "/contact", description: "View contact information" },
+    { name: "/clear", description: "Clear the terminal" },
+    { name: "/close", description: "Close this window" },
   ];
 
   const handleFolderClick = (folder: string) => {
@@ -33,10 +45,30 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       processCommand();
+    } else if (e.key === "Tab" || e.key === "ArrowDown") {
+      e.preventDefault();
+      setShowDropdown(true);
+    } else if (e.key === "Escape") {
+      setShowDropdown(false);
+    }
+  };
+
+  const toggleDropdown = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setShowDropdown(!showDropdown);
+  };
+
+  const selectCommand = (cmd: string) => {
+    setCommand(cmd);
+    setShowDropdown(false);
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
   };
 
   const processCommand = () => {
+    if (!command) return;
+    
     const newHistory = [...history, `> ${command}`];
     
     switch(command.toLowerCase()) {
@@ -97,6 +129,7 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
     
     setHistory(newHistory);
     setCommand("");
+    setShowDropdown(false);
   };
 
   useEffect(() => {
@@ -105,17 +138,41 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
     }
   }, [history]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current && 
+        !dropdownRef.current.contains(event.target as Node) &&
+        inputRef.current && 
+        !inputRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     onClose(e);
   };
 
+  // Function to capitalize the first letter of the title
+  const capitalizeTitle = (text: string) => {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  };
+
   return (
     <div className="w-[300px] h-[200px] border border-white bg-gray-200 relative font-mono shadow-lg overflow-hidden flex flex-col">
       {/* Title Bar */}
       <div className="flex justify-between items-center bg-blue-900 text-white pl-2 text-xs handle cursor-move">
-        <span className="">{title}</span>
+        <span className="">{capitalizeTitle(title)}</span>
         <button
           onClick={handleClose}
           className="close-button bg-gray-600 border-l border-white text-black px-1"
@@ -195,16 +252,44 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
                 <div key={index}>{line}</div>
               ))}
             </div>
-            <div className="flex bg-black text-green-500 font-mono text-xs px-2 py-1 border-t border-gray-800">
+            <div className="flex bg-black text-green-500 font-mono text-xs px-2 py-1 border-t border-gray-800 relative">
               <span>{">"}</span>
-              <input
-                type="text"
-                value={command}
-                onChange={(e) => setCommand(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="bg-transparent text-green-500 font-mono text-xs border-none outline-none w-full ml-1"
-                autoFocus
-              />
+              <div className="relative flex-1">
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={command}
+                  onChange={(e) => setCommand(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  onClick={toggleDropdown}
+                  className="bg-transparent text-green-500 font-mono text-xs border-none outline-none w-full ml-1 cursor-pointer"
+                  autoFocus
+                  placeholder="Click for commands"
+                />
+                {showDropdown && (
+                  <div 
+                    ref={dropdownRef}
+                    className="absolute bottom-6 left-0 w-full bg-gray-800 border border-gray-700 shadow-lg max-h-24 overflow-y-auto z-50"
+                  >
+                    {commands.map((cmd, index) => (
+                      <div 
+                        key={index}
+                        onClick={() => selectCommand(cmd.name)}
+                        className="px-2 py-1 text-green-500 hover:bg-gray-700 cursor-pointer flex justify-between"
+                      >
+                        <span>{cmd.name}</span>
+                        <span className="text-gray-400 text-xs">{cmd.description}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <button 
+                onClick={processCommand}
+                className="ml-1 bg-gray-800 text-green-500 px-1 hover:bg-gray-700"
+              >
+                ⏎
+              </button>
             </div>
           </div>
         </div>
