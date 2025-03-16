@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, ReactNode } from "react";
 
 interface WindowProps {
   title: string;
@@ -9,9 +9,10 @@ interface WindowProps {
 }
 
 const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
+  // Change the type to accept both strings and React elements
   const [command, setCommand] = useState<string>("");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  const [history, setHistory] = useState<string[]>([
+  const [history, setHistory] = useState<ReactNode[]>([
     "Welcome to SREY 2K25 Terminal",
     "Type /help to see available commands",
   ]);
@@ -83,13 +84,13 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
     return (
       <div>
         Instagram: <a 
-          href="https://www.instagram.com/srey2k25_official" 
+          href="https://www.instagram.com/stcet.ac.in" 
           target="_blank" 
           rel="noopener noreferrer"
-          onClick={(e) => handleLinkClick("https://www.instagram.com/srey2k25_official", e)}
+          onClick={(e) => handleLinkClick("https://www.instagram.com/stcet.ac.in", e)}
           className="text-blue-400 hover:underline cursor-pointer"
         >
-          @srey2k25_official
+          @stcet.ac.in
         </a>
       </div>
     );
@@ -100,13 +101,13 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
     return (
       <div>
         Facebook: <a 
-          href="https://www.facebook.com/StThomasSREY2K25" 
+          href="https://www.facebook.com/profile.php?id=100072114125436" 
           target="_blank" 
           rel="noopener noreferrer"
-          onClick={(e) => handleLinkClick("https://www.facebook.com/StThomasSREY2K25", e)}
+          onClick={(e) => handleLinkClick("https://www.facebook.com/profile.php?id=100072114125436", e)}
           className="text-blue-400 hover:underline cursor-pointer"
         >
-          facebook.com/StThomasSREY2K25
+          St Thomas College of Engineering & Technology
         </a>
       </div>
     );
@@ -151,15 +152,15 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
         break;
       
       case '/insta':
-        newHistory.push(<div key="insta">{renderInstagram()}</div>);
+        newHistory.push(renderInstagram());
         break;
       
       case '/fb':
-        newHistory.push(<div key="fb">{renderFacebook()}</div>);
+        newHistory.push(renderFacebook());
         break;
       
       case '/contact':
-        newHistory.push(<div key="contact">{renderContact()}</div>);
+        newHistory.push(renderContact());
         break;
       
       case '/clear':

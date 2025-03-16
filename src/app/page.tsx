@@ -12,9 +12,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const zoomDuration = 1000; // Animation duration in ms
   
-  // Create refs for audio elements
-  const powerOnAudioRef = useRef(null);
-  const powerOffAudioRef = useRef(null);
+  // Create refs for audio elements with proper typing
+  const powerOnAudioRef = useRef<HTMLAudioElement>(null);
+  const powerOffAudioRef = useRef<HTMLAudioElement>(null);
 
   // Check if device is mobile on mount and when window resizes
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function Home() {
     // Play power on sound
     if (powerOnAudioRef.current) {
       powerOnAudioRef.current.currentTime = 0; // Reset audio to start
-      powerOnAudioRef.current.play().catch(e => console.error("Error playing audio:", e));
+      powerOnAudioRef.current.play().catch((e: Error) => console.error("Error playing audio:", e));
     }
     
     // First turn on CRT
@@ -77,7 +77,7 @@ export default function Home() {
     // Play power off sound
     if (powerOffAudioRef.current) {
       powerOffAudioRef.current.currentTime = 0; // Reset audio to start
-      powerOffAudioRef.current.play().catch(e => console.error("Error playing audio:", e));
+      powerOffAudioRef.current.play().catch((e: Error) => console.error("Error playing audio:", e));
     }
     
     // Hide button immediately when clicked

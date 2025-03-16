@@ -31,12 +31,20 @@ const sponsorData = [
   }
 ];
 
+// Define local prop types that match what the components expect
+interface EventFolderContentProps {
+  title: string;
+  description: string;
+  onClose: () => void;
+  onItemClick: (item: string) => void;
+}
+
 const CRTScreen = () => {
-  const [openWindows, setOpenWindows] = useState([]);
+  const [openWindows, setOpenWindows] = useState<string[]>([]);
   const [booting, setBooting] = useState(true);
   const [bootText, setBootText] = useState('');
-  const clickAudioRef = useRef(null);
-  const containerRef = useRef(null);
+  const clickAudioRef = useRef<HTMLAudioElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   
   // Use our custom hook for responsive dimensions
   const { screenDimensions, iconSize } = useCRTDimensions(containerRef);
@@ -54,7 +62,7 @@ const CRTScreen = () => {
     // Boot sequence animation - simplified to be faster
     let currentLine = 0;
     let currentChar = 0;
-    let bootInterval;
+    let bootInterval: NodeJS.Timeout;
     
     if (booting) {
       bootInterval = setInterval(() => {
@@ -84,20 +92,20 @@ const CRTScreen = () => {
     }
 
     return () => {
-      clearInterval(bootInterval);
+      if (bootInterval) clearInterval(bootInterval);
     };
   }, [booting]);
 
   // Handle external links (registration)
-  const handleExternalLink = (url) => {
+  const handleExternalLink = (url: string) => {
     window.open(url, '_blank');
   };
 
-  const toggleWindow = (id) => {
+  const toggleWindow = (id: string) => {
     // Play click sound
     if (clickAudioRef.current) {
       clickAudioRef.current.currentTime = 0;
-      clickAudioRef.current.play().catch(err => console.error("Audio play failed:", err));
+      clickAudioRef.current.play().catch((err: Error) => console.error("Audio play failed:", err));
     }
 
     setOpenWindows((prev) =>
@@ -106,7 +114,7 @@ const CRTScreen = () => {
   };
 
   // Enhanced close window function with better mobile support
-  const closeWindow = (id, event) => {
+  const closeWindow = (id: string, event?: React.MouseEvent) => {
     // Prevent event propagation to avoid issues with parent elements
     if (event) {
       event.preventDefault();
@@ -116,7 +124,7 @@ const CRTScreen = () => {
     // Play click sound
     if (clickAudioRef.current) {
       clickAudioRef.current.currentTime = 0;
-      clickAudioRef.current.play().catch(err => console.error("Audio play failed:", err));
+      clickAudioRef.current.play().catch((err: Error) => console.error("Audio play failed:", err));
     }
     
     // Remove the window from openWindows
@@ -124,7 +132,7 @@ const CRTScreen = () => {
   };
 
   // Function to determine window position to avoid stacking directly on top of each other
-  const getWindowPosition = (windowId) => {
+  const getWindowPosition = (windowId: string) => {
     const basePosition = { x: 7, y: 10 };
     
     // For event folders, position them with slight offset
@@ -143,7 +151,7 @@ const CRTScreen = () => {
   };
 
   // Function to determine which event folder content type to use
-  const getEventFolderType = (eventId) => {
+  const getEventFolderType = (eventId: string) => {
     // Technical events use content type 1 (with Gallery folder)
     const technicalEvents = ['hackathon', 'film-making', 'pixcellence', 'mini-games', 
       'sketchify', 'playtopia', 'mystic-map', 'quiz', 'robotics', 'coding'];
@@ -159,7 +167,7 @@ const CRTScreen = () => {
   };
   
   // Get base event ID from any window ID (e.g. "table-tennis-rules" -> "table-tennis")
-  const getBaseEventId = (windowId) => {
+  const getBaseEventId = (windowId: string) => {
     const parts = windowId.split('-');
     // Handle special cases like "film-making"
     if (parts[0] === 'film' && parts[1] === 'making') {
@@ -186,13 +194,13 @@ const CRTScreen = () => {
   };
 
   // Render appropriate component based on window ID
-  const renderWindow = (windowId) => {
+  const renderWindow = (windowId: string) => {
     // Handle sponsor window
     if (windowId === 'sponsor') {
       return (
         <SponsorWindow 
           title="Sponsors"
-          onClose={(e) => closeWindow(windowId, e)}
+          onClose={() => closeWindow(windowId)}
           sponsors={sponsorData}
         />
       );
@@ -208,7 +216,7 @@ const CRTScreen = () => {
           <RulesDocument 
             title={`${eventData.title} - Rules`}
             content={eventData.rules}
-            onClose={(e) => closeWindow(windowId, e)}
+            onClose={() => closeWindow(windowId)}
           />
         );
       }
@@ -221,7 +229,7 @@ const CRTScreen = () => {
           <TextDocument 
             title={`${eventData.title} - About Us`}
             content={eventData.aboutUs}
-            onClose={(e) => closeWindow(windowId, e)}
+            onClose={() => closeWindow(windowId)}
           />
         );
       }
@@ -234,7 +242,7 @@ const CRTScreen = () => {
           <Gallery 
             title={`${eventData.title} - Gallery`}
             images={eventData.galleryImages}
-            onClose={(e) => closeWindow(windowId, e)}
+            onClose={() => closeWindow(windowId)}
           />
         );
       }
@@ -246,7 +254,7 @@ const CRTScreen = () => {
       const eventData = eventContentData[baseEventId];
       const folderType = getEventFolderType(baseEventId);
       
-      const handleFolderItemClick = (item) => {
+      const handleFolderItemClick = (item: string) => {
         if (item === 'rules') {
           handleExternalLink(eventData.rules);
         } else if (item === 'about') {
@@ -258,31 +266,32 @@ const CRTScreen = () => {
         }
       };
       
-      const eventFolderProps = {
+      // Create props object
+      const folderProps: EventFolderContentProps = {
         title: eventData.title,
         description: eventData.description,
-        onClose: (e) => closeWindow(windowId, e),
+        onClose: () => closeWindow(windowId),
         onItemClick: handleFolderItemClick
       };
       
       return folderType === 1 ? 
-        <EventFolderContent1 {...eventFolderProps} /> :
-        <EventFolderContent2 {...eventFolderProps} />;
+        <EventFolderContent1 {...folderProps} /> :
+        <EventFolderContent2 {...folderProps} />;
     }
     
     // Handle main windows
     if (windowId === 'day1') {
-      return <Day1Window onClose={(e) => closeWindow(windowId, e)} onFolderClick={toggleWindow} />;
+      return <Day1Window onClose={() => closeWindow(windowId)} onFolderClick={toggleWindow} />;
     } else if (windowId === 'day2') {
       return <Day2Window 
-        onClose={(e) => closeWindow(windowId, e)} 
-        onFolderClick={(folderId) => toggleWindow(folderId)} 
+        onClose={() => closeWindow(windowId)} 
+        onFolderClick={toggleWindow} 
       />;
     } else {
       return (
         <Window 
           title={windowId} 
-          onClose={(e) => closeWindow(windowId, e)}
+          onClose={() => closeWindow(windowId)}
           onFolderClick={toggleWindow}
         />
       );
