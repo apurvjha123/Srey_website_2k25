@@ -66,6 +66,72 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
     }
   };
 
+  // Function to handle link clicks
+  const handleLinkClick = (url: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    window.open(url, '_blank');
+  };
+
+  // Function to handle phone calls
+  const handlePhoneClick = (phone: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    window.location.href = `tel:${phone}`;
+  };
+
+  // Function to render Instagram with clickable link
+  const renderInstagram = () => {
+    return (
+      <div>
+        Instagram: <a 
+          href="https://www.instagram.com/srey2k25_official" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          onClick={(e) => handleLinkClick("https://www.instagram.com/srey2k25_official", e)}
+          className="text-blue-400 hover:underline cursor-pointer"
+        >
+          @srey2k25_official
+        </a>
+      </div>
+    );
+  };
+
+  // Function to render Facebook with clickable link
+  const renderFacebook = () => {
+    return (
+      <div>
+        Facebook: <a 
+          href="https://www.facebook.com/StThomasSREY2K25" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          onClick={(e) => handleLinkClick("https://www.facebook.com/StThomasSREY2K25", e)}
+          className="text-blue-400 hover:underline cursor-pointer"
+        >
+          facebook.com/StThomasSREY2K25
+        </a>
+      </div>
+    );
+  };
+
+  // Function to render contact with clickable phone numbers
+  const renderContact = () => {
+    return (
+      <>
+        <div>--- SREY 2K25 Contact Information ---</div>
+        {contacts.map((contact, index) => (
+          <div key={index}>
+            {contact.name} ({contact.role}): <a 
+              href={`tel:${contact.phone}`}
+              onClick={(e) => handlePhoneClick(contact.phone, e)}
+              className="text-blue-400 hover:underline cursor-pointer"
+            >
+              {contact.phone}
+            </a>
+          </div>
+        ))}
+      </>
+    );
+  };
+
   const processCommand = () => {
     if (!command) return;
     
@@ -85,22 +151,15 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
         break;
       
       case '/insta':
-        newHistory.push(
-          "Instagram: @srey2k25_official"
-        );
+        newHistory.push(<div key="insta">{renderInstagram()}</div>);
         break;
       
       case '/fb':
-        newHistory.push(
-          "Facebook: facebook.com/StThomasSREY2K25"
-        );
+        newHistory.push(<div key="fb">{renderFacebook()}</div>);
         break;
       
       case '/contact':
-        newHistory.push(
-          "--- SREY 2K25 Contact Information ---",
-          ...contacts.map(contact => `${contact.name} (${contact.role}): ${contact.phone}`)
-        );
+        newHistory.push(<div key="contact">{renderContact()}</div>);
         break;
       
       case '/clear':
