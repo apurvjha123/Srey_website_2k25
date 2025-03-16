@@ -296,7 +296,7 @@ const CRTScreen = () => {
       style={{
         width: `${screenDimensions.width}px`,
         height: `${screenDimensions.height}px`,
-        backgroundImage: booting ? 'none' : 'url(https://de34i7k6qwgwc.cloudfront.net/uploads/img/background-computer-d0f45e.jpg)',
+        backgroundImage: booting ? 'none' : 'url(/CRT_Bg.PNG)',
         backgroundColor: booting ? '#000' : 'transparent',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
