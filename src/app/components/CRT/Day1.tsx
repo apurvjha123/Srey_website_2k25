@@ -66,8 +66,8 @@ const Day1Window = ({ onClose, onFolderClick }: Day1WindowProps) => (
         </button>
       </div>
       <div className="flex items-center bg-gray-400 text-white text-xs handle cursor-move border-t border-b border-white">
-        <span className="border-r border-white px-1">🔙</span>
-        <span className="border-r border-white px-1">🏠︎</span>
+        <span className="border-r border-white px-1" onClick={onClose}>🔙</span>
+        <span className="border-r border-white px-1" onClick={onClose}>🏠︎</span>
         <span className="px-2">C:\Events\Day1</span>
       </div>
       <Day1Content onFolderClick={onFolderClick} />

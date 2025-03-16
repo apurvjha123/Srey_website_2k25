@@ -13,7 +13,6 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
   const [history, setHistory] = useState<string[]>([
     "Welcome to SREY 2K25 Terminal",
     "Type /help to see available commands",
-    ">"
   ]);
   const terminalRef = useRef<HTMLDivElement>(null);
   
@@ -48,43 +47,51 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
           "/fb - Get our Facebook page",
           "/contact - View contact information of volunteers",
           "/clear - Clear the terminal",
-          "/help - Show this help message",
-          ">"
+          "/close - Close this window",
+          "/help - Show this help message"
         );
         break;
       
       case '/insta':
         newHistory.push(
-          "Instagram: @srey2k25_official",
-          ">"
+          "Instagram: @srey2k25_official"
         );
         break;
       
       case '/fb':
         newHistory.push(
-          "Facebook: facebook.com/StThomasSREY2K25",
-          ">"
+          "Facebook: facebook.com/StThomasSREY2K25"
         );
         break;
       
       case '/contact':
         newHistory.push(
           "--- SREY 2K25 Contact Information ---",
-          ...contacts.map(contact => `${contact.name} (${contact.role}): ${contact.phone}`),
-          ">"
+          ...contacts.map(contact => `${contact.name} (${contact.role}): ${contact.phone}`)
         );
         break;
       
       case '/clear':
-        setHistory(["Terminal cleared.", ">"]);
+        setHistory(["Terminal cleared."]);
         setCommand("");
+        return;
+        
+      case '/close':
+        newHistory.push(
+          "Closing window..."
+        );
+        setHistory(newHistory);
+        setCommand("");
+        // Delay the window close for a moment to show the closing message
+        setTimeout(() => {
+          onClose();
+        }, 500);
         return;
       
       default:
         newHistory.push(
           `Command not recognized: ${command}`,
-          "Type /help to see available commands.",
-          ">"
+          "Type /help to see available commands."
         );
     }
     
@@ -189,7 +196,7 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
               ))}
             </div>
             <div className="flex bg-black text-green-500 font-mono text-xs px-2 py-1 border-t border-gray-800">
-              <span>{history[history.length - 1] !== ">" ? ">" : ""}</span>
+              <span>{">"}</span>
               <input
                 type="text"
                 value={command}
