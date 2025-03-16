@@ -8,8 +8,12 @@ const byteBounce = localFont({
 });
 
 export const metadata = {
-  title: 'Retro CRT UI',
-  description: 'A retro-style UI with old-school vibes',
+  title: 'Srey2k25',
+  description: 'Techfest of St Thomas College of Engineering and Technology',
+  icons: [
+    { rel: 'icon', url: '/srey_logo.png' },
+    { rel: 'shortcut icon', url: '/srey_logo.png' }
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -18,6 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script src="https://cdn.tailwindcss.com"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Explicit favicon links as fallback */}
+        <link rel="icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
       </head>
       <body style={{
         fontFamily: 'var(--font-byte-bounce)',

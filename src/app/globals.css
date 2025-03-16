@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@600;700&display=swap');
 
-body {
-  font-family: 'Kode Mono', monospace;
-}
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -19,6 +15,7 @@ body {
 }
 
 body {
+  font-family: 'Kode Mono', monospace;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -26,7 +23,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  background-image: url('/public/scene2-d14f31-compressed-da7d54.jpg');
+  background-image: url('/scene2-d14f31-compressed-da7d54.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
