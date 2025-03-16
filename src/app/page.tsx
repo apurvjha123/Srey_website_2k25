@@ -91,7 +91,7 @@ export default function Home() {
       <main
         className={`flex min-h-screen w-full flex-col items-center justify-center transition-all duration-1000 ease-in-out ${!showCRT ? 'cursor-pointer' : ''}`}
         style={{
-          backgroundImage: 'url(/IMG_3988.PNG)',
+          backgroundImage: 'url(/IMG_3995.PNG)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
