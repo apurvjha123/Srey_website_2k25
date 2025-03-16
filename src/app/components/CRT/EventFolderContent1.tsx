@@ -43,7 +43,7 @@ const EventFolderContent1: React.FC<EventFolderContent1Props> = ({
                 <span>Gallery</span>
               </div>
               <div className="flex items-center cursor-pointer" onClick={() => onItemClick('rules')}>
-                <img src="/folder-d42ea2.png" alt="PDF" className="w-6 h-6 mr-2" />
+                <img src="/text_icon.png" alt="PDF" className="w-6 h-6 mr-2" />
                 <span>Rules.pdf</span>
               </div>
               <div className="flex items-center cursor-pointer" onClick={() => onItemClick('registration')}>
