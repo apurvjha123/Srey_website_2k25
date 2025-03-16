@@ -37,8 +37,8 @@ const Gallery: React.FC<GalleryProps> = ({ title, images, onClose }) => {
         </button>
       </div>
       <div className="flex items-center bg-gray-400 text-white text-xs handle cursor-move border-t border-b border-white">
-        <span className="border-r border-white px-1">🔙</span>
-        <span className="border-r border-white px-1">🏠︎</span>
+        <span className="border-r border-white px-1" onClick={onClose}>🔙</span>
+        <span className="border-r border-white px-1" onClick={onClose}>🏠︎</span>
         <span className="px-2">{`C:\\Gallery\\${title}`}</span>
       </div>
       <div className="p-2 text-xs text-gray-800 h-[160px] bg-gray-300 flex flex-col">

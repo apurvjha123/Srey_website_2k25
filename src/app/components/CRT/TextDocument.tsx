@@ -27,8 +27,8 @@ const TextDocument: React.FC<TextDocumentProps> = ({ title, content, onClose }) 
         </button>
       </div>
       <div className="flex items-center bg-gray-400 text-white text-xs handle cursor-move border-t border-b border-white">
-        <span className="border-r border-white px-1">🔙</span>
-        <span className="border-r border-white px-1">🏠︎</span>
+        <span className="border-r border-white px-1" onClick={onClose}>🔙</span>
+        <span className="border-r border-white px-1" onClick={onClose}>🏠︎</span>
         <span className="px-2">{`C:\\Documents\\${title}.txt`}</span>
       </div>
       <div className="p-4 text-xs text-gray-800 overflow-y-auto h-[160px]">

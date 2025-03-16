@@ -127,8 +127,8 @@ const Window = ({ title, onClose, onFolderClick }: WindowProps) => {
       {title === "events" ? (
         <>
           <div className="flex items-center bg-gray-400 text-white text-xs handle cursor-move border-t border-b border-white">
-            <span className="border-r border-white px-1">🔙</span>
-            <span className="border-r border-white px-1">🏠︎</span>
+            <span className="border-r border-white px-1" onClick={onClose}>🔙</span>
+            <span className="border-r border-white px-1" onClick={onClose}>🏠︎</span>
             <span className="px-2">C:\Events\</span>
           </div>
           <div className="bg-gray-300 p-2 text-xs flex-1 flex">
