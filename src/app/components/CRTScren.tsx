@@ -32,7 +32,7 @@ const CRTScreen = () => {
   // Simplified boot sequence with fewer lines
   const bootSequence = [
     'Starting...',
-    'Welcome to STCET OS'
+    'Welcome to STCET OS ...'
   ];
 
   useEffect(() => {

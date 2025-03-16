@@ -9,9 +9,9 @@ const useCRTDimensions = (containerRef: RefObject<HTMLDivElement>) => {
   // Adjust these values as needed.
   const deviceSettings = [
     { maxWidth: 359, width: 200, icon: 22 },   // Extra small mobile
-    { maxWidth: 380, width: 300, icon: 24 },   // Small mobile
-    { maxWidth: 639, width: 310, icon: 26 },   // Medium mobile
-    { maxWidth: 767, width: 300, icon: 28 },   // Large mobile/small tablet
+    { maxWidth: 380, width: 310, icon: 24 },   // Small mobile
+    { maxWidth: 639, width: 320, icon: 26 },   // Medium mobile
+    { maxWidth: 767, width: 310, icon: 28 },   // Large mobile/small tablet
     { maxWidth: 1023, width: 300, icon: 30 },  // Tablets
     { maxWidth: 1439, width: 300, icon: 25 },  // Laptops
     { maxWidth: Infinity, width: 355, icon: 35 } // Desktops and larger
